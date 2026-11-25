@@ -1,0 +1,69 @@
+.tone-app {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f0f2f5;
+  --border: #dde1e7;
+  --text: #16191f;
+  --muted: #5d6573;
+  --accent: #1f4fd1;
+  --accent-text: #ffffff;
+  --pos: #0f7a4f;
+  --pos-bg: #d9f2e6;
+  --neg: #b42318;
+  --neg-bg: #fbe1de;
+  --warn-bg: #fff4d6;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  .tone-app:not([data-theme="light"]) {
+    --bg: #0f1216; --surface: #171b21; --surface-2: #1f242c; --border: #2c333d;
+    --text: #e7eaee; --muted: #9aa3b0; --accent: #7aa2ff; --accent-text: #0b0f16;
+    --pos: #4cc98f; --pos-bg: #133628; --neg: #ff8a7a; --neg-bg: #3d1915; --warn-bg: #3a3014;
+    --shadow: none; color-scheme: dark;
+  }
+}.tone-app[data-theme="dark"] {
+  --bg: #0f1216; --surface: #171b21; --surface-2: #1f242c; --border: #2c333d;
+  --text: #e7eaee; --muted: #9aa3b0; --accent: #7aa2ff; --accent-text: #0b0f16;
+  --pos: #4cc98f; --pos-bg: #133628; --neg: #ff8a7a; --neg-bg: #3d1915; --warn-bg: #3a3014;
+  --shadow: none; color-scheme: dark;
+}.tone-app * { box-sizing: border-box; }.tone-app {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+}.tone-app .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 16px 48px; }.tone-app h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }.tone-app h2 { font-size: 15px; margin: 0; }.tone-app h3 { font-size: 14px; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }.tone-app .sub { margin: 0; color: var(--muted); max-width: 680px; }.tone-app .masthead { margin-bottom: 20px; }.tone-app .card, .tone-app .doc-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px; box-shadow: var(--shadow);
+}.tone-app .card + .card, .tone-app .grid2 + .card, .tone-app .card + .grid2, .tone-app .kpis + .card { margin-top: 16px; }.tone-app .modes { display: inline-flex; background: var(--surface-2); border-radius: 999px; padding: 3px; margin-bottom: 14px; }.tone-app .mode { border: 0; background: none; color: var(--muted); padding: 7px 16px; border-radius: 999px; font: inherit; cursor: pointer; }.tone-app .mode.active { background: var(--surface); color: var(--text); box-shadow: var(--shadow); font-weight: 600; }.tone-app .inputs { display: grid; grid-template-columns: 1fr; gap: 14px; }.tone-app .inputs.two { grid-template-columns: 1fr 1fr; }.tone-app .doc-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }.tone-app .doc-head h2 { white-space: nowrap; }.tone-app .doc-label { flex: 1; min-width: 160px; }.tone-app input[type="text"], .tone-app select, .tone-app textarea {
+  font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border);
+  border-radius: 7px; padding: 7px 10px;
+}.tone-app textarea { width: 100%; min-height: 150px; resize: vertical; font-size: 13px; line-height: 1.45; margin-top: 10px; }.tone-app .drop {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  border: 1.5px dashed var(--border); border-radius: 8px; padding: 18px; text-align: center;
+  color: var(--muted); cursor: pointer; background: var(--surface-2); transition: border-color .15s;
+}.tone-app .drop:hover, .tone-app .drop.over { border-color: var(--accent); color: var(--text); }.tone-app .drop-file { color: var(--text); font-weight: 600; word-break: break-all; }.tone-app .doc-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; font-size: 12px; color: var(--muted); }.tone-app .options {
+  display: flex; flex-wrap: wrap; align-items: end; gap: 14px; margin: 16px 0 8px;
+}.tone-app .options > label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }.tone-app .options .check { flex-direction: row; align-items: center; gap: 6px; font-size: 13px; color: var(--text); padding-bottom: 8px; }.tone-app .actions { margin-left: auto; display: flex; gap: 12px; align-items: center; }.tone-app button.primary {
+  background: var(--accent); color: var(--accent-text); border: 0; border-radius: 8px;
+  padding: 10px 22px; font: inherit; font-weight: 600; cursor: pointer;
+}.tone-app button.primary:disabled { opacity: .55; cursor: progress; }.tone-app .link { background: none; border: 0; color: var(--accent); font: inherit; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 2px; }.tone-app .status { min-height: 22px; color: var(--muted); font-size: 13px; margin: 4px 0 12px; }.tone-app .status.err { color: var(--neg); }.tone-app .summary { border-left: 4px solid var(--accent); }.tone-app .summary h3 { margin-bottom: 8px; }.tone-app .summary ul { margin: 0; padding-left: 18px; }.tone-app .summary li { margin: 3px 0; }.tone-app .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 16px; }.tone-app .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }.tone-app .kpi .k { font-size: 12px; color: var(--muted); }.tone-app .kpi .v { font-size: 26px; font-weight: 650; font-variant-numeric: tabular-nums; margin: 2px 0; }.tone-app .kpi .s { font-size: 12px; color: var(--muted); }.tone-app .up { color: var(--pos); }.tone-app .down { color: var(--neg); }.tone-app .gauge { position: relative; height: 14px; border-radius: 999px; margin: 26px 0 8px;
+  background: linear-gradient(90deg, var(--neg-bg), var(--surface-2) 50%, var(--pos-bg)); border: 1px solid var(--border); }.tone-app .gauge .tick { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--border); left: 50%; }.tone-app .gauge .mk { position: absolute; top: 50%; width: 16px; height: 16px; border-radius: 50%; transform: translate(-50%, -50%);
+  border: 2px solid var(--text); background: var(--text); }.tone-app .gauge .mk.prior { background: var(--surface); }.tone-app .gauge .mk span { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 11px; white-space: nowrap; color: var(--muted); }.tone-app .gauge .mk.prior span { bottom: auto; top: 20px; }.tone-app .gauge .mk.edge-r span { left: auto; right: -6px; transform: none; }.tone-app .gauge .mk.edge-l span { left: -6px; transform: none; }.tone-app .gauge { margin-bottom: 30px; }.tone-app .gauge-legend { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }.tone-app .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }.tone-app .drivers { list-style: none; margin: 0; padding: 0; }.tone-app .drivers li { display: grid; grid-template-columns: minmax(0, 1fr) 90px 52px; gap: 10px; align-items: center; padding: 5px 0; border-bottom: 1px solid var(--surface-2); font-size: 13px; }.tone-app .drivers .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }.tone-app .drivers .bar { height: 8px; border-radius: 4px; background: var(--surface-2); overflow: hidden; }.tone-app .drivers .bar i { display: block; height: 100%; }.tone-app .drivers .pos i { background: var(--pos); }.tone-app .drivers .neg i { background: var(--neg); }.tone-app .drivers .num { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }.tone-app .drivers .empty { color: var(--muted); display: block; border: 0; }.tone-app .tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 0 5px; border-radius: 4px; background: var(--surface-2); color: var(--muted); margin-right: 4px; vertical-align: 1px; }.tone-app .neg-t { color: var(--neg); }.tone-app .diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }.tone-app .diff-grid h4 { margin: 0 0 6px; font-size: 13px; }.tone-app .diff-grid ul { list-style: none; margin: 0; padding: 0; font-size: 13px; }.tone-app .diff-grid li { padding: 4px 0; border-bottom: 1px solid var(--surface-2); display: flex; justify-content: space-between; gap: 8px; }.tone-app .diff-grid li span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }.tone-app .diff-grid .none { color: var(--muted); }.tone-app .explorer-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }.tone-app .explorer-head h3 { margin: 0; }.tone-app .explorer-controls { display: flex; gap: 8px; }.tone-app .legend { font-size: 12px; color: var(--muted); margin: 6px 0 10px; }.tone-app .sentences { display: flex; flex-direction: column; gap: 6px; }.tone-app .sent { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 10px; padding: 8px 10px; border-radius: 7px; background: var(--surface-2); font-size: 13.5px; }.tone-app .sent .sc { font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }.tone-app .sent .meta { font-size: 11px; color: var(--muted); margin-top: 3px; }.tone-app mark { border-radius: 3px; padding: 0 2px; color: inherit; }.tone-app mark.pos { background: var(--pos-bg); box-shadow: inset 0 -2px 0 var(--pos); }.tone-app mark.neg { background: var(--neg-bg); box-shadow: inset 0 -2px 0 var(--neg); }.tone-app mark.neu { background: var(--warn-bg); }.tone-app .notes { font-size: 13px; color: var(--muted); }.tone-app .notes ul { margin: 6px 0 0; padding-left: 18px; }.tone-app .method { margin-top: 22px; font-size: 14px; }.tone-app .method summary { cursor: pointer; font-weight: 600; }.tone-app .method li { margin: 6px 0; }.tone-app .lm { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; }.tone-app #lm-status { color: var(--muted); }.tone-app footer { margin-top: 24px; font-size: 12px; color: var(--muted); text-align: center; }
+
+@media (max-width: 760px) {
+  .tone-app .inputs.two, .tone-app .grid2, .tone-app .diff-grid { grid-template-columns: 1fr; }.tone-app .actions { margin-left: 0; width: 100%; justify-content: space-between; }.tone-app .drivers li { grid-template-columns: minmax(0, 1fr) 60px 46px; }.tone-app .sent { grid-template-columns: 44px minmax(0, 1fr); }
+}
+
+/* Integration-only typography and layout. Analyzer logic and markup are unchanged. */
+.tone-app { --bg:#f7f6f2; --accent:#bb4327; --accent-text:#fff; font-family:'DM Sans',Arial,sans-serif; font-size:16px; }
+.tone-app .wrap { max-width:1184px; padding-top:0; }
+.tone-app h1, .tone-app h2, .tone-app h3 { font-family:Manrope,Arial,sans-serif; line-height:1.4; }
+.tone-app p { color:inherit; }
+.tone-app .actions { margin-top:0; flex-wrap:wrap; }
+.tone-app .modes { display:inline-flex; gap:0; }
+.tone-app .modes button { border-bottom:0; }
+.tone-app textarea { font-size:14px; }
+.tone-app .options > label, .tone-app .doc-foot, .tone-app .kpi .k, .tone-app .kpi .s { font-size:14px; }
+.tone-app [hidden] { display:none!important; }
+@media(max-width:480px){ .tone-app .modes { display:flex; border-radius:12px; } .tone-app .mode { padding:9px 10px; font-size:14px; flex:1; } .tone-app .doc-label { min-width:0; width:100%; } .tone-app .explorer-controls { flex-wrap:wrap; } .tone-app select { max-width:100%; } }

@@ -1,0 +1,68 @@
+[
+  {
+    "id": "nvent",
+    "title": "nVent Equity Research",
+    "category": "equity",
+    "kind": "Equity research",
+    "date": "June 2026",
+    "summary": "AI data-center electrification, operating forecasts and valuation for nVent Electric (NYSE: NVT).",
+    "question": "How does AI infrastructure demand translate into nVent’s operating outlook and valuation?",
+    "role": "Independent research",
+    "methods": ["Operating forecasts", "Scenario analysis", "P/E and DCF valuation"],
+    "takeaway": "The report separates a constructive operating thesis from a more restrained valuation conclusion.",
+    "overview": [
+      "An equity research report examining nVent’s role in AI data-center electrification, power management, cooling, and systems protection.",
+      "The June 2026 report develops an investment thesis, operating forecasts, valuation analysis, and a DCF cross-check. Dates and assumptions refer to the original document."
+    ],
+    "cover": {"label": "NYSE: NVT", "headline": "nVent Electric", "sub": "Systems protection at the center of AI electrification", "tone": "blue"},
+    "repo": "nVent-Equity-Research",
+    "browse_repo": false,
+    "files": [
+      {"name": "nVent Equity Research Report.md", "src": "/files/nvent/report.md", "label": "Full research report", "github": "report/nVent-Equity-Research-Report.md"}
+    ]
+  },
+  {
+    "id": "sustainable",
+    "title": "Sustainable Investing",
+    "category": "academic",
+    "kind": "Survey paper",
+    "date": "October 2026",
+    "summary": "A survey of 35 studies on whether sustainable investing changes corporate behavior or mainly reprices assets.",
+    "question": "Does sustainable investing change corporate behavior, or primarily reprice financial assets?",
+    "role": "Coauthored literature survey",
+    "methods": ["Review of 35 studies", "Cost-of-capital framework", "Divestment vs. engagement"],
+    "takeaway": "Evidence for price effects is more consistent; engagement shows stronger evidence of operational change than unconditional exit.",
+    "overview": [
+      "A coauthored survey of 35 theoretical and empirical studies examining sustainable investing through two links: its effect on financing costs, and the resulting effect on corporate behavior.",
+      "The paper compares divestment, ESG integration, and shareholder engagement. Written by Dipen Bhatt, Amanda Arthur, Shanshan Wang, and Hanbing Yang for Topics in Quantitative Finance at WashU Olin. The full paper includes its generative-AI disclosure."
+    ],
+    "cover": {"label": "Survey paper", "headline": "Capital, climate, change?", "sub": "Divestment · ESG integration · Engagement", "tone": "green"},
+    "repo": "sustainable-investing-survey-paper",
+    "browse_repo": false,
+    "files": [
+      {"name": "Sustainable Investing Survey Paper.md", "src": "/files/sustainable/report.md", "label": "Full paper", "github": "README.md"}
+    ]
+  },
+  {
+    "id": "building",
+    "title": "Zero Energy Building",
+    "category": "engineering",
+    "kind": "Engineering project",
+    "date": "2023",
+    "summary": "Energy-efficient residential design, solar sizing and life-cycle costing for a household in Nepal.",
+    "question": "How can efficient design and renewable energy reduce a Nepalese household’s energy needs?",
+    "role": "Six-person undergraduate research team",
+    "methods": ["Building materials", "Solar sizing", "Life-cycle costing", "Water and waste systems"],
+    "takeaway": "A residential feasibility study combining energy demand, renewable supply, building systems, and economic analysis.",
+    "overview": [
+      "A civil engineering team project at Thapathali Campus, Tribhuvan University, investigating zero-energy residential building design in Nepal.",
+      "The report studies energy-efficient materials and appliances, geothermal heat-pump feasibility, solar-panel sizing, rainwater harvesting, solid-waste management, and economic analysis. Prepared by Devashish Singh, Devesh Gyawali, Dipen Bhatt, Garima Bhusal, Gaurav Basnet, and Ishwara Gautam."
+    ],
+    "cover": {"label": "Engineering", "headline": "Zero Energy Building", "sub": "Efficiency · Renewables · Building design", "tone": "sand"},
+    "repo": "zero-energy-building-research",
+    "browse_repo": false,
+    "files": [
+      {"name": "Zero Energy Building Report.md", "src": "/files/building/report.md", "label": "Final project report", "github": "README.md"}
+    ]
+  }
+]

@@ -1,0 +1,133 @@
+<div class="tone-app" data-theme="light"><div class="wrap">
+    <header class="masthead">
+      <div>
+        <h1>ER Tone Analyzer</h1>
+        <p class="sub">Management tone in 10-Ks, 10-Qs, earnings calls and news, scored with an equity-research lexicon. Your files are processed in your browser and never uploaded.</p>
+      </div>
+    </header>
+
+    <nav class="modes" role="tablist" aria-label="Mode">
+      <button role="tab" class="mode active" data-mode="single" aria-selected="true">Score one document</button>
+      <button role="tab" class="mode" data-mode="compare" aria-selected="false">Compare with prior</button>
+    </nav>
+
+    <section class="inputs" id="inputs">
+      <div class="doc-card" data-slot="current">
+        <div class="doc-head">
+          <h2 data-title>Document</h2>
+          <input class="doc-label" type="text" placeholder="Label, e.g. ACME Q3 FY26 call" aria-label="Document label">
+        </div>
+        <label class="drop">
+          <input type="file" accept=".pdf,.txt,.htm,.html,.md,text/plain,application/pdf,text/html" hidden>
+          <span class="drop-main">Drop a PDF, HTML or TXT file here, or <u>browse</u></span>
+          <span class="drop-file" hidden></span>
+        </label>
+        <textarea placeholder="…or paste the text of a filing, transcript or news article" aria-label="Document text"></textarea>
+        <div class="doc-foot"><span class="count">0 words</span><button class="link clear" type="button">Clear</button></div>
+      </div>
+
+      <div class="doc-card" data-slot="prior" hidden>
+        <div class="doc-head">
+          <h2>Prior document</h2>
+          <input class="doc-label" type="text" placeholder="Label, e.g. ACME Q2 FY26 call" aria-label="Prior document label">
+        </div>
+        <label class="drop">
+          <input type="file" accept=".pdf,.txt,.htm,.html,.md,text/plain,application/pdf,text/html" hidden>
+          <span class="drop-main">Drop the prior period's file here, or <u>browse</u></span>
+          <span class="drop-file" hidden></span>
+        </label>
+        <textarea placeholder="…or paste the prior period's text" aria-label="Prior document text"></textarea>
+        <div class="doc-foot"><span class="count">0 words</span><button class="link clear" type="button">Clear</button></div>
+      </div>
+    </section>
+
+    <section class="options">
+      <label>Document type
+        <select id="opt-type">
+          <option value="auto">Auto-detect</option>
+          <option value="transcript">Earnings call transcript</option>
+          <option value="filing">10-K / 10-Q filing</option>
+          <option value="news">News / press release</option>
+        </select>
+      </label>
+      <label>Filing section
+        <select id="opt-section">
+          <option value="mda">MD&amp;A only (if found)</option>
+          <option value="full">Full text</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="opt-mgmt" checked> Score management only (exclude analysts)</label>
+      <div class="actions">
+        <button class="link" id="btn-sample" type="button">Load sample</button>
+        <button class="primary" id="btn-run" type="button">Analyze</button>
+      </div>
+    </section>
+
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+
+    <section id="results" hidden>
+      <div class="summary card" id="summary"></div>
+
+      <div class="kpis" id="kpis"></div>
+
+      <div class="card">
+        <h3>Tone scale</h3>
+        <div class="gauge" id="gauge" aria-hidden="true"></div>
+        <div class="gauge-legend"><span>−100 very negative</span><span>0</span><span>+100 very positive</span></div>
+      </div>
+
+      <div class="card" id="diff-card" hidden>
+        <h3>What changed vs prior</h3>
+        <div class="diff-grid" id="diff"></div>
+      </div>
+
+      <div class="grid2">
+        <div class="card"><h3>Top positive drivers</h3><ol class="drivers" id="drv-pos"></ol></div>
+        <div class="card"><h3>Top negative drivers</h3><ol class="drivers" id="drv-neg"></ol></div>
+      </div>
+
+      <div class="card">
+        <div class="explorer-head">
+          <h3>Sentence explorer</h3>
+          <div class="explorer-controls">
+            <select id="ex-doc" aria-label="Document" hidden>
+              <option value="current">Current</option>
+              <option value="prior">Prior</option>
+            </select>
+            <select id="ex-filter" aria-label="Filter sentences">
+              <option value="impact">Most impactful</option>
+              <option value="neg">Most negative</option>
+              <option value="pos">Most positive</option>
+              <option value="scored">All scored, in order</option>
+              <option value="all">Everything, in order</option>
+            </select>
+          </div>
+        </div>
+        <p class="legend"><mark class="pos">positive</mark> <mark class="neg">negative</mark> <span class="tag">ER</span> phrase · <span class="tag">M</span> metric move · <span class="tag neg-t">¬</span> negated · <span class="tag">~</span> hedged · <span class="tag">→</span> forward-looking</p>
+        <div id="sentences" class="sentences"></div>
+        <button class="link" id="ex-more" type="button" hidden>Show more</button>
+      </div>
+
+      <div class="card notes" id="notes"></div>
+    </section>
+
+    <details class="card method">
+      <summary>How the score works</summary>
+      <ol>
+        <li><b>Clean.</b> For 10-K/10-Qs the MD&amp;A section is extracted. For transcripts, speakers are detected, analysts and the operator are removed, and prepared remarks are separated from Q&amp;A. Safe-harbor and call-logistics sentences, page numbers and table rows are dropped.</li>
+        <li><b>ER phrases first.</b> Multi-word expressions like <i>free cash flow positive</i> (+3), <i>covenant waiver</i> (−3) or <i>going concern</i> (−5) are matched before single words, so they aren't double counted.</li>
+        <li><b>Metric × move.</b> A metric paired with a direction word within five words: <i>gross margin … compressed</i>, <i>raising … guidance</i>, <i>churn … increased</i>. Each metric knows whether "up" is good (revenue) or bad (churn, leverage, DSO).</li>
+        <li><b>Single words</b> from a finance-aware list (or the Loughran-McDonald dictionary, if loaded).</li>
+        <li><b>Modifiers.</b> Negation (<i>not yet</i> FCF positive) flips and halves a score; intensifiers (<i>significantly</i>) scale it up and diminishers (<i>slightly</i>) scale it down; hedged sentences (<i>may, could, potentially</i>) count 60%.</li>
+        <li><b>Score</b> = (positive − negative) ÷ (positive + negative) × 100. Forward-looking and backward-looking sentences are also scored separately.</li>
+        <li><b>Comparison.</b> Change in score, a bootstrap confidence interval (sentences resampled 1,000×) to tell real shifts from noise, language similarity, and the phrases that appeared, disappeared or changed in frequency.</li>
+      </ol>
+      <div class="lm">
+        <b>Optional: load the Loughran-McDonald dictionary.</b>
+        <span id="lm-status">Using built-in starter word list.</span>
+        <label class="link">Upload LM Master Dictionary CSV <input type="file" id="lm-file" accept=".csv,.json" hidden></label>
+      </div>
+    </details>
+
+    <footer>For research and educational purposes only. Not investment advice. Scores are dictionary-based and can misread context.</footer>
+  </div></div>
